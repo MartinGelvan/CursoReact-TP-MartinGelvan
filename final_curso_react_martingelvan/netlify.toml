@@ -1,0 +1,9 @@
+[build]
+  base = "final_curso_react_martingelvan"
+  command = "npm run build"
+  publish = "final_curso_react_martingelvan/dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

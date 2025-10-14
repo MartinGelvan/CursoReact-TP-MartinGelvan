@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Batfield 1",
+    "price": 100,
+    "category": "juegos",
+    "img": "../images/BF1.jpg",
+    "stock": 10,
+    "description": "Descripcion del Producto 1"
+  },
+  {
+    "id": 2,
+    "name": "RE2 Remake",
+    "price": 200,
+    "category": "dlc",
+    "img": "../images/RE2R.jpg",
+    "stock": 20,
+    "description": "Descripcion del Producto 2"
+  }
+]

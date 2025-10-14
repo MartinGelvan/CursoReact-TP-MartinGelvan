@@ -1,0 +1,106 @@
+/* =======================
+   HEADER STYLING
+======================= */
+/* Aseguramos que ocupe todo el ancho */
+header {
+  width: 100vw; /* ancho completo de la ventana */
+  max-width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  margin: 0; /* elimina márgenes */
+}
+
+/* Reset de body/html para que no haya margenes que corten */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* evita scroll horizontal raro */
+}
+
+/* LOGO */
+header h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+header h1:hover {
+  color: #3b82f6; /* azul brillante al pasar el mouse */
+}
+
+/* NAVIGATION */
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  right: 500px;
+}
+
+/* Cada item */
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+/* BUTTON WRAPPER - se ajusta al componente Button */
+nav ul li button {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  background: #2563eb; /* azul principal */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+nav ul li button:hover {
+  background: #1d4ed8; /* azul más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.45);
+}
+
+nav ul li button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  nav ul li button {
+    width: 100%;
+    text-align: center;
+  }
+}

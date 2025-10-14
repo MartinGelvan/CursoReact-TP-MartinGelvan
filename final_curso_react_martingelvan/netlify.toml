@@ -1,7 +1,7 @@
 [build]
   base = "final_curso_react_martingelvan"
   command = "npm run build"
-  publish = "final_curso_react_martingelvan/dist"
+  publish = "dist"
 
 [[redirects]]
   from = "/*"

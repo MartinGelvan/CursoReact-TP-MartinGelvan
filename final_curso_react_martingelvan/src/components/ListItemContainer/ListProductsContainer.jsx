@@ -14,7 +14,7 @@ export const ListProductsContainer = () => {
       })
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching products:", error));
-  }, [products]);
+  }, []);
 
   return (
     <section>

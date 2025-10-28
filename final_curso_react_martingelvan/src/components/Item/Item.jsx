@@ -10,6 +10,7 @@ export const Item = ({
   img,
   stock,
   description,
+  children,
 }) => {
   return (
     <div className="item-card">
@@ -19,6 +20,7 @@ export const Item = ({
       <img src={img} alt={name} />
       <p className="stock">Stock: {stock}</p>
       <p className="description">{description}</p>
+      <div className="item-children">{children}</div>
     </div>
   );
 };

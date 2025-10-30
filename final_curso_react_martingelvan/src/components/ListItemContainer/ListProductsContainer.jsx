@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { ItemList } from "../ListItem/ItemList";
+import { useParams } from "react-router-dom";
 
 export const ListProductsContainer = () => {
   const [products, setProducts] = useState([]);
+  const { categoryName } = useParams();
 
   useEffect(() => {
     fetch("/data/products.json")
@@ -12,9 +14,17 @@ export const ListProductsContainer = () => {
         }
         return response.json();
       })
-      .then((data) => setProducts(data))
+      .then((data) => {
+        const filtered = categoryName
+          ? data.filter(
+              (product) =>
+                product.category.toLowerCase() === categoryName.toLowerCase()
+            )
+          : data;
+        setProducts(filtered);
+      })
       .catch((error) => console.error("Error fetching products:", error));
-  }, []);
+  }, [categoryName]);
 
   return (
     <section>

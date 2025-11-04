@@ -5,6 +5,7 @@ import { ProductDetailContainer } from "./components/ProductDetailContainer/Prod
 import "./css/estiloApp.css";
 import { CartProvider } from "./context/CartContext/CartProvider";
 import { Cart } from "./components/Cart/Cart";
+import { ProductFormContainer } from "./components/adminComponents/ProductoFormContainer/ProductFormContainer";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
             element={<ProductDetailContainer />}
           ></Route>
           <Route path="/carrito" element={<Cart></Cart>} />
+          <Route
+            path="/admin"
+            element={<ProductFormContainer></ProductFormContainer>}
+          ></Route>
         </Routes>
       </CartProvider>
     </>

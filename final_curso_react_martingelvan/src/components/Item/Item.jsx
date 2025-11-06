@@ -7,7 +7,7 @@ export const Item = ({
   name,
   price,
   category,
-  img,
+  image,
   stock,
   description,
   children,
@@ -17,7 +17,7 @@ export const Item = ({
       <h2>{name}</h2>
       <p className="price">Price: ${price}</p>
       <p className="category">Category: {category}</p>
-      <img src={img} alt={name} />
+      <img src={image} alt={name} />
       <p className="stock">Stock: {stock}</p>
       <p className="description">{description}</p>
       <div className="item-children">{children}</div>

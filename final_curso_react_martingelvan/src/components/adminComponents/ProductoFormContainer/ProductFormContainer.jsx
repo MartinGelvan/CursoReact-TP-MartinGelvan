@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ProductFormUi } from "../ProductFormUi/ProductFormUi";
 import { validateProduct } from "../../../utils/validateProducts";
+import { uploadToImgbb } from "../../../services/uploadImage";
 import { createProduct } from "../../../services/products";
 
 export const ProductFormContainer = () => {
@@ -9,9 +10,8 @@ export const ProductFormContainer = () => {
     price: "",
     category: "",
     description: "",
-    file: null,
   });
-
+  const [file, setFile] = useState(null);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -20,42 +20,39 @@ export const ProductFormContainer = () => {
     setProduct((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (file) => {
-    setProduct((prev) => ({ ...prev, file }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors({});
+    setLoading(true);
 
-    const validationErrors = validateProduct(product, false);
-    setErrors(validationErrors);
-    if (Object.keys(validationErrors).length > 0) return;
+    const newErrors = validateProduct({ ...product, file });
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setLoading(false);
+      return;
+    }
 
     try {
-      setLoading(true);
+      const image = await uploadToImgbb(file);
+      const productData = {
+        ...product,
+        price: Number(product.price),
+        image: image,
+      };
 
-      const productToSend = { ...product };
-      delete productToSend.file;
-
-      const data = await createProduct(productToSend);
-      console.log("Producto creado:", data);
-
-      setProduct({
-        name: "",
-        price: "",
-        category: "",
-        description: "",
-        file: null,
-      });
-      setErrors({});
+      await createProduct(productData);
+      alert("producto cargado con exito");
+      setProduct({ name: "", price: "", category: "", description: "" });
+      setFile(null);
     } catch (error) {
-      console.error("Error al crear el producto:", error);
-      setErrors({ general: "No se pudo crear el producto" });
+      setErrors({ general: error.message });
     } finally {
       setLoading(false);
     }
   };
-
+  const handleFileChange = (file) => {
+    setFile(file);
+  };
   return (
     <ProductFormUi
       product={product}

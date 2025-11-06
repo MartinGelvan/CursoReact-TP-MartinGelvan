@@ -7,7 +7,7 @@ export const ListProductsContainer = () => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    fetch("/data/products.json")
+    fetch("https://6900bc50ff8d792314bb38db.mockapi.io/products")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

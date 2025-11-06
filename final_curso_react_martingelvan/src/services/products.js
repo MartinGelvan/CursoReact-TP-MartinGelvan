@@ -14,3 +14,17 @@ export const createProduct = async (product) => {
   const result = await res.json();
   return result;
 };
+
+export const getProducts = async () => {
+  const res = await fetch(BASE_URL, {
+    method: "GET",
+    headers: { "Content-type": "application/json" },
+  });
+
+  if (!res.ok) {
+    throw new Error("No se pudo obtener los productos");
+  }
+
+  const result = await res.json();
+  return result;
+};

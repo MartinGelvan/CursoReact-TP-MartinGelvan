@@ -15,7 +15,7 @@ export const ProductDetailContainer = () => {
         return response.json();
       })
       .then((data) => {
-        const productDetail = data.find((item) => item.id === Number(id));
+        const productDetail = data.find((item) => item.id === id);
         setDetail(productDetail);
       })
       .catch((error) => console.error("Error fetching products:", error));
